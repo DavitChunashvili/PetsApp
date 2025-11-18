@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MVP_Project.Views
+{
+    public partial class PetView : Form, IPetView
+    {
+        //Fields
+        private string message;
+        private bool isSuccessful;
+        private bool isEdit;
+        private string petcolour;
+
+        //Constructor
+        public PetView()
+        {
+            InitializeComponent();
+            AssiciateAndRaiseViewEvents();
+            tabControl1.TabPages.Remove(tabPagePetDetail);
+        }
+
+        private void AssiciateAndRaiseViewEvents()
+        {
+            btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            txtSearch.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+            //Others
+        }
+
+        //Properties - Fields
+        public string PetID 
+        { 
+            get => txtPetId.Text;
+            set => txtPetId.Text = value;
+        }
+        public string PetName
+        { 
+            get => txtPetName.Text;
+            set => txtPetName.Text = value;
+        }
+        public string PetType
+        {
+            get => txtPetType.Text; 
+            set => txtPetType.Text = value; 
+        }
+        public string PetColour 
+        { 
+            get => txtPetColour.Text; 
+            set => txtPetColour.Text = value;
+        }
+        public string SearchValue
+        { 
+            get => txtSearch.Text; 
+            set => txtSearch.Text = value;
+        }
+        public bool IsEdit 
+        {
+            get => isEdit;
+            set => isEdit = value;
+        }
+        public bool IsSuccessful
+        {
+            get => isSuccessful;
+            set => isSuccessful = value;
+        }
+        public string Message 
+        {
+            get => message;
+            set => message = value; 
+        }
+
+        //Events
+        public event EventHandler SearchEvent;
+        public event EventHandler AddNewEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvent;
+        public event EventHandler CancelEvent;
+
+        //Methods
+        public void SetPetListBindingSource(BindingSource petList)
+        {
+            dataGridView.DataSource = petList;
+        }
+    }
+}
