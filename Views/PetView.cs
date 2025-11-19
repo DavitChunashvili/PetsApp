@@ -25,6 +25,7 @@ namespace MVP_Project.Views
             InitializeComponent();
             AssiciateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPagePetDetail);
+            btnClose.Click += delegate { this.Close(); };
         }
 
         private void AssiciateAndRaiseViewEvents()
@@ -94,6 +95,28 @@ namespace MVP_Project.Views
         public void SetPetListBindingSource(BindingSource petList)
         {
             dataGridView.DataSource = petList;
+        }
+        //Singleton pattern (Open a single form instance)
+        private static PetView instance;
+        public static PetView GetInstance(Form parrentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new PetView();
+                instance.MdiParent = parrentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill; 
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                    instance.BringToFront();    
+                }
+            }
+                
+            return instance;
         }
     }
 }

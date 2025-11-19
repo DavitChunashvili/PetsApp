@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             panel1 = new Panel();
+            btnClose = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             btnDelete = new Button();
@@ -70,12 +71,23 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(btnClose);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1048, 67);
             panel1.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.Location = new Point(985, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(51, 43);
+            btnClose.TabIndex = 10;
+            btnClose.Text = "X";
+            btnClose.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -107,6 +119,7 @@
             // 
             // btnDelete
             // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDelete.Location = new Point(912, 195);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 30);
@@ -116,6 +129,7 @@
             // 
             // btnEdit
             // 
+            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEdit.Location = new Point(912, 159);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(120, 30);
@@ -125,6 +139,7 @@
             // 
             // btnAddNew
             // 
+            btnAddNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddNew.Location = new Point(912, 123);
             btnAddNew.Name = "btnAddNew";
             btnAddNew.Size = new Size(120, 30);
@@ -134,6 +149,8 @@
             // 
             // dataGridView
             // 
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(22, 81);
             dataGridView.Name = "dataGridView";
@@ -143,6 +160,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.Location = new Point(795, 45);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(120, 30);
@@ -152,6 +170,7 @@
             // 
             // txtSearch
             // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Location = new Point(22, 45);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
@@ -322,5 +341,6 @@
         private Button btnSearch;
         private TextBox txtSearch;
         private Button btnDelete;
+        private Button btnClose;
     }
 }
