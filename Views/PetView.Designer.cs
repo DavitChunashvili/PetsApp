@@ -32,7 +32,7 @@
             panel1 = new Panel();
             btnClose = new Button();
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tabPagePetList = new TabPage();
             btnDelete = new Button();
             btnEdit = new Button();
             btnAddNew = new Button();
@@ -41,8 +41,8 @@
             txtSearch = new TextBox();
             label6 = new Label();
             tabPagePetDetail = new TabPage();
-            CancelButton = new Button();
-            SaveButton = new Button();
+            btnCancel = new Button();
+            btnSave = new Button();
             txtPetColour = new TextBox();
             txtPetType = new TextBox();
             txtPetName = new TextBox();
@@ -53,7 +53,7 @@
             label2 = new Label();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPagePetList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             tabPagePetDetail.SuspendLayout();
             SuspendLayout();
@@ -91,7 +91,7 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPagePetList);
             tabControl1.Controls.Add(tabPagePetDetail);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 67);
@@ -100,22 +100,22 @@
             tabControl1.Size = new Size(1048, 494);
             tabControl1.TabIndex = 2;
             // 
-            // tabPage1
+            // tabPagePetList
             // 
-            tabPage1.Controls.Add(btnDelete);
-            tabPage1.Controls.Add(btnEdit);
-            tabPage1.Controls.Add(btnAddNew);
-            tabPage1.Controls.Add(dataGridView);
-            tabPage1.Controls.Add(btnSearch);
-            tabPage1.Controls.Add(txtSearch);
-            tabPage1.Controls.Add(label6);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1040, 461);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Pet list";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPagePetList.Controls.Add(btnDelete);
+            tabPagePetList.Controls.Add(btnEdit);
+            tabPagePetList.Controls.Add(btnAddNew);
+            tabPagePetList.Controls.Add(dataGridView);
+            tabPagePetList.Controls.Add(btnSearch);
+            tabPagePetList.Controls.Add(txtSearch);
+            tabPagePetList.Controls.Add(label6);
+            tabPagePetList.Location = new Point(4, 29);
+            tabPagePetList.Name = "tabPagePetList";
+            tabPagePetList.Padding = new Padding(3);
+            tabPagePetList.Size = new Size(1040, 461);
+            tabPagePetList.TabIndex = 0;
+            tabPagePetList.Text = "Pet list";
+            tabPagePetList.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -189,8 +189,8 @@
             // 
             // tabPagePetDetail
             // 
-            tabPagePetDetail.Controls.Add(CancelButton);
-            tabPagePetDetail.Controls.Add(SaveButton);
+            tabPagePetDetail.Controls.Add(btnCancel);
+            tabPagePetDetail.Controls.Add(btnSave);
             tabPagePetDetail.Controls.Add(txtPetColour);
             tabPagePetDetail.Controls.Add(txtPetType);
             tabPagePetDetail.Controls.Add(txtPetName);
@@ -207,23 +207,23 @@
             tabPagePetDetail.Text = "Pet detail";
             tabPagePetDetail.UseVisualStyleBackColor = true;
             // 
-            // CancelButton
+            // btnCancel
             // 
-            CancelButton.Location = new Point(291, 329);
-            CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(189, 47);
-            CancelButton.TabIndex = 9;
-            CancelButton.Text = "Cancel";
-            CancelButton.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(291, 329);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(189, 47);
+            btnCancel.TabIndex = 9;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
-            // SaveButton
+            // btnSave
             // 
-            SaveButton.Location = new Point(71, 329);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(189, 47);
-            SaveButton.TabIndex = 8;
-            SaveButton.Text = "Save";
-            SaveButton.UseVisualStyleBackColor = true;
+            btnSave.Location = new Point(71, 329);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(189, 47);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
             // 
             // txtPetColour
             // 
@@ -309,8 +309,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabPagePetList.ResumeLayout(false);
+            tabPagePetList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             tabPagePetDetail.ResumeLayout(false);
             tabPagePetDetail.PerformLayout();
@@ -322,14 +322,14 @@
         private Label label1;
         private Panel panel1;
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabPagePetList;
         private TabPage tabPagePetDetail;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label6;
-        private Button CancelButton;
-        private Button SaveButton;
+        private Button btnCancel;
+        private Button btnSave;
         private TextBox txtPetColour;
         private TextBox txtPetType;
         private TextBox txtPetName;

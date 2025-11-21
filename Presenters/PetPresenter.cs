@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MVP_Project.Models;
+using MVP_Project.Views;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVP_Project.Models;
-using MVP_Project.Views;
 
 namespace MVP_Project.Presenters
 {
@@ -44,27 +45,80 @@ namespace MVP_Project.Presenters
 
         private void CancelAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
         private void SavePet(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var model = new PetModel();
+            model.Id = Convert.ToInt32(view.PetID);
+            model.Name = view.PetName;
+            model.Type = view.PetType;
+            model.Colour = view.PetColour;
+            try
+            {
+                new Common.ModelDataValidation().Validate(model);
+                if (view.IsEdit) //Edit pet
+                {
+                    repository.Edit(model);
+                   
+                    view.Message = "Pet edited successfully.";
+                }
+                else //Add new pet
+                {
+                    repository.Add(model);
+                    
+                    view.Message = "New pet added successfully.";
+                }
+                view.IsSuccessful = true;
+                LoadAllPets();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Error occured while saving pet. " + ex.Message;
+            }
+        }
+
+        private void CleanViewFields()
+        {
+            view.PetID = "0";
+            view.PetName = "";
+            view.PetType ="";
+            view.PetColour = "";
+           
         }
 
         private void DeleteSelectedPet(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var pet = (PetModel)petBindingSource.Current;
+                repository.Delete(pet.Id);
+                view.IsSuccessful = true;
+                view.Message = "Pet deleted successfully.";
+                LoadAllPets();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Error occured while deleting pet. " + ex.Message;
+            }
         }
-
         private void LoadSelectedPetToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var pet  = (PetModel) petBindingSource.Current;
+            view.PetID = pet.Id.ToString();
+            view.PetName = pet.Name;
+            view.PetType = pet.Type;
+            view.PetColour = pet.Colour;
+            view.IsEdit = true;
         }
 
         private void AddNewPet(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
 
         private void SearchPet(object? sender, EventArgs e)
